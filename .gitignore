@@ -43,3 +43,4 @@ prep
 server-dist
 client-dist
 schema.graphql
+__generated__

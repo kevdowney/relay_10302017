@@ -1,4 +1,4 @@
-import { GraphQLInt } from 'graphql';
+import { GraphQLInt, GraphQLFloat } from 'graphql';
 import { connectionDefinitions } from 'graphql-relay';
 
 import { carType } from '../types/car-type';
@@ -15,6 +15,10 @@ export const {
     totalCount: {
       type: GraphQLInt,
     },
+    totalPrice: {
+      type: GraphQLFloat,
+    },
+
   }),
 
 });

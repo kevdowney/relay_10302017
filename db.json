@@ -23,6 +23,46 @@
       "color": "a",
       "price": 0,
       "id": 3
+    },
+    {
+      "make": "",
+      "model": "",
+      "year": 1900,
+      "color": "",
+      "price": 0,
+      "id": 4
+    },
+    {
+      "make": "sfs",
+      "model": "sdfsd",
+      "year": 1900,
+      "color": "sdd",
+      "price": 0,
+      "id": 5
+    },
+    {
+      "make": "",
+      "model": "",
+      "year": 1900,
+      "color": "",
+      "price": 0,
+      "id": 6
+    },
+    {
+      "make": "makk",
+      "model": "slkflkd",
+      "year": 1900,
+      "color": "kjlj",
+      "price": 0,
+      "id": 7
+    },
+    {
+      "make": "sdfsd",
+      "model": "sdfsdsd",
+      "year": 1900,
+      "color": "sdsssd",
+      "price": 0,
+      "id": 8
     }
   ],
   "owners": [

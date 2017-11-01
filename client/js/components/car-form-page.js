@@ -5,11 +5,13 @@ import { environment } from '../environment';
 
 import { CarFormHomeContainer } from './car-form-home';
 
+import { PaginatedCarTableContainer } from './paginated-car-table';
+
 
 export class CarFormPage extends React.Component {
 
   showCarTable = () => {
-    this.props.router.push('/Cars');
+    this.props.router.push('/cars');
   }
 
   render() {
