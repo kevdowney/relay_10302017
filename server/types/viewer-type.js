@@ -8,7 +8,7 @@ import { colorConnectionType } from '../connections/colors';
 import { WidgetData } from '../models/widget-data';
 import { CarData } from '../models/car-data';
 import { CarMakeModelData } from '../models/car-make-model-data';
-import { ColorModelData } from '../models/color-data';
+import { ColorData } from '../models/color-data';
 import { Widget, Viewer, Car, CarMakeModels, Color } from '../models/graphql-models';
 import { nodeInterface } from '../utils/node-definitions';
 import { registerType } from '../utils/resolve-type';
