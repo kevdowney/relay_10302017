@@ -3,6 +3,7 @@ import { QueryRenderer, graphql } from 'react-relay';
 
 import { environment } from '../environment';
 import { CarTableContainer } from './car-table';
+import { PaginatedCarTableContainer } from './paginated-car-table';
 import { CarForm } from './car-form';
 import { insertCar as relayInsertCar } from '../mutations/insert-car';
 import { deleteCar as relayDeleteCar } from '../mutations/delete-car';
@@ -23,7 +24,7 @@ export class CarHome extends React.Component {
           query carHomeQuery {
             viewer {
               id
-              ...carTable_viewer
+              ...paginatedCarTable_viewer
             }
           }
         `}
@@ -48,7 +49,7 @@ export class CarHome extends React.Component {
 
           if (props) {
             return <div>
-              <CarTableContainer viewer={props.viewer}
+              <PaginatedCarTableContainer viewer={props.viewer}
                 onDeleteCar={reactDeleteCar} />
               <CarForm onSubmitCar={reactInsertCar} />
             </div>;
