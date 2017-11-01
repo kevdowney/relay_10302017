@@ -309,5 +309,37 @@
       "authorId": 1,
       "id": 17
     }
+  ],
+  "carmakemodels": [
+    {
+      "make": "Toyota",
+      "models": [ 
+        "Camry",
+        "Tundra"
+      ],
+      "id": 1
+    },
+    {
+      "make": "Ford",
+      "models": [ 
+        "Fusion",
+        "CMax"
+      ],
+      "id": 2
+    }
+  ],
+  "colors": [
+    {
+      "color": "blue",
+      "id": 1
+    },
+    {
+      "color": "red",
+      "id": 2
+    },
+    {
+      "color": "green",
+      "id": 3
+    }
   ]
 }

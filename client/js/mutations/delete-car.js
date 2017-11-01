@@ -22,9 +22,10 @@ const mutation = graphql`
   }
 `;
 
-const sharedUpdater = (source, viewerId, carId, totalCount) => {
+const sharedUpdater = (source, viewerId, carId, totalCount, totalPrice) => {
   const viewerProxy = source.get(viewerId);
   const conn = ConnectionHandler.getConnection(viewerProxy, 'CarTable_cars');
+  const car = source.get(carId);
   ConnectionHandler.deleteNode(conn, carId);
 
   // update the total count
@@ -32,6 +33,12 @@ const sharedUpdater = (source, viewerId, carId, totalCount) => {
     totalCount = conn.getValue('totalCount') - 1;
   }
   conn.setValue(totalCount, 'totalCount');  
+
+  // update the total price
+  if (!totalPrice) {
+    totalPrice = conn.getValue('totalPrice') - car.getValue('price');
+  }
+  conn.setValue(totalPrice, 'totalPrice');
 };
 
 let clientMutationId = 0;
@@ -59,8 +66,11 @@ export const deleteCar = (environment, viewerId, carId) => {
 
           const totalCount = payload.getLinkedRecord('viewer')
             .getLinkedRecord('cars').getValue('totalCount');
+
+          const totalPrice = payload.getLinkedRecord('viewer')
+            .getLinkedRecord('cars').getValue('totalPrice');
           
-          sharedUpdater(source, viewerId, deletedCar.getValue('id'), totalCount);
+          sharedUpdater(source, viewerId, deletedCar.getValue('id'),totalCount, totalPrice);
         },
         optimisticUpdater: source => {
           sharedUpdater(source, viewerId, carId);

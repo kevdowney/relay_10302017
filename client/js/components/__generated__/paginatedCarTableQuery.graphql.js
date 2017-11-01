@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash eacf167ce0fd943fabbadcc0bfbc841c
+ * @relayHash 80329680301c7724bf8f4e16fc7c5b83
  */
 
 /* eslint-disable */
@@ -37,6 +37,7 @@ fragment paginatedCarTable_viewer_1G22uz on Viewer {
       cursor
     }
     totalCount
+    totalPrice
     pageInfo {
       startCursor
       endCursor
@@ -246,6 +247,13 @@ const batch /*: ConcreteBatch*/ = {
                 "storageKey": null
               },
               {
+                "kind": "ScalarField",
+                "alias": null,
+                "args": null,
+                "name": "totalPrice",
+                "storageKey": null
+              },
+              {
                 "kind": "LinkedField",
                 "alias": null,
                 "args": null,
@@ -321,7 +329,7 @@ const batch /*: ConcreteBatch*/ = {
       }
     ]
   },
-  "text": "query paginatedCarTableQuery(\n  $count: Int!\n  $cursor: String\n) {\n  viewer {\n    ...paginatedCarTable_viewer_1G22uz\n    id\n  }\n}\n\nfragment paginatedCarTable_viewer_1G22uz on Viewer {\n  cars(first: $count, after: $cursor) {\n    edges {\n      node {\n        id\n        ...carViewRow_car\n        __typename\n      }\n      cursor\n    }\n    totalCount\n    pageInfo {\n      startCursor\n      endCursor\n      hasNextPage\n      hasPreviousPage\n    }\n  }\n}\n\nfragment carViewRow_car on Car {\n  id\n  make\n  model\n  year\n  color\n  price\n}\n"
+  "text": "query paginatedCarTableQuery(\n  $count: Int!\n  $cursor: String\n) {\n  viewer {\n    ...paginatedCarTable_viewer_1G22uz\n    id\n  }\n}\n\nfragment paginatedCarTable_viewer_1G22uz on Viewer {\n  cars(first: $count, after: $cursor) {\n    edges {\n      node {\n        id\n        ...carViewRow_car\n        __typename\n      }\n      cursor\n    }\n    totalCount\n    totalPrice\n    pageInfo {\n      startCursor\n      endCursor\n      hasNextPage\n      hasPreviousPage\n    }\n  }\n}\n\nfragment carViewRow_car on Car {\n  id\n  make\n  model\n  year\n  color\n  price\n}\n"
 };
 
 module.exports = batch;
