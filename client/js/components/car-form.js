@@ -35,6 +35,15 @@ export class CarForm extends React.Component {
 
     return <form>
       <div>
+      <label>
+          Pick your favorite La Croix flavor:
+          <select value={this.state.make} onChange={this.onChange}>
+            <option value="grapefruit">Grapefruit</option>
+            <option value="lime">Lime</option>
+            <option value="coconut">Coconut</option>
+            <option value="mango">Mango</option>
+          </select>
+        </label>
         <label htmlFor="make-input">Make</label>
         <input type="text" id="make-input" name="make"
           value={this.state.make} onChange={this.onChange} />
