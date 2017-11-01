@@ -39,6 +39,8 @@ export const viewerType = new GraphQLObjectType({
           const carModels = cars.map(c => Object.assign(new Car(), c));
           const conn = connectionFromArray(carModels, args);
           conn.totalCount = carModels.length;
+          conn.totalPrice = 0;
+          carModels.forEach((car) => (conn.totalPrice += car.price));
           return conn;
 
         });
