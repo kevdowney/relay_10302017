@@ -5,6 +5,7 @@ import { deleteWidgetMutationType as deleteWidget } from './delete-widget-mutati
 import { updateWidgetMutationType as updateWidget } from './update-widget-mutation-type';
 import { insertCarMutationType as insertCar } from './insert-car-mutation-type';
 import { deleteCarMutationType as deleteCar } from './delete-car-mutation-type';
+import { updateCarMutationType as updateCar } from './update-car-mutation-type';
 
 export const mutation = new GraphQLObjectType({
 
@@ -16,6 +17,7 @@ export const mutation = new GraphQLObjectType({
     updateWidget,
     insertCar,
     deleteCar,
+      updateCar,
   }),
 
 });
