@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { createFragmentContainer, graphql } from 'react-relay';
 
 export class CarForm extends React.Component {
 
@@ -32,21 +33,13 @@ export class CarForm extends React.Component {
   }
 
   render() {
-
+          
     return <form>
       <div>
-      <label>
-          Pick your favorite La Croix flavor:
-          <select value={this.state.make} onChange={this.onChange}>
-            <option value="grapefruit">Grapefruit</option>
-            <option value="lime">Lime</option>
-            <option value="coconut">Coconut</option>
-            <option value="mango">Mango</option>
-          </select>
-        </label>
         <label htmlFor="make-input">Make</label>
-        <input type="text" id="make-input" name="make"
-          value={this.state.make} onChange={this.onChange} />
+          <select value={this.state.make} onChange={this.onChange}>
+          {this.props.viewer && this.props.viewer.carmakemodels.edges.map((node) => (<option key={node.node.make} value={node.node.make}>{node.node.make}</option>))}
+          </select>
       </div>
       <div>
         <label htmlFor="model-input">Model</label>
@@ -72,3 +65,18 @@ export class CarForm extends React.Component {
     </form>;
   }
 }
+
+export const CarFormContainer = createFragmentContainer(
+  CarForm, graphql`
+    fragment carForm_viewer on Viewer {
+      carmakemodels {
+        edges {
+          node {
+            make
+            models
+          }
+        }
+      }
+    }
+  `
+);
