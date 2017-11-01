@@ -61,6 +61,8 @@ export class CarTable extends React.Component {
         this.props.onCreateCar();
     }
 
+
+
     render() {
 
         return <div>
@@ -87,7 +89,7 @@ export class CarTable extends React.Component {
                 } else {
                     carEdges.slice(startIndex, endIndex).map( ({ node: car }) => do {
                     <CarViewRowContainer key={car.id} car={car}
-                    onDeleteCar={this.props.onDeleteCar} />;
+                    onDeleteCar={this.props.onDeleteCar} onUpdateCar={this.props.onUpdateCar} setEditMode={this.setEditMode}/>;
                 });
                 }
                 }}

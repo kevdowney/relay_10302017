@@ -7,6 +7,7 @@ import { PaginatedCarTableContainer } from './paginated-car-table';
 import { CarForm } from './car-form';
 import { insertCar as relayInsertCar } from '../mutations/insert-car';
 import { deleteCar as relayDeleteCar } from '../mutations/delete-car';
+import { updateCar as relayUpdateCar } from '../mutations/update-car';
 
 
 export class CarHome extends React.Component {
@@ -45,12 +46,20 @@ export class CarHome extends React.Component {
               props.viewer.id,
               carId,
             );
-          };          
+          };
+
+            const reactUpdateCar = car => {
+                relayUpdateCar(
+                    environment,
+                    props.viewer.id,
+                    car,
+                );
+            };
 
           if (props) {
             return <div>
               <PaginatedCarTableContainer viewer={props.viewer}
-                onDeleteCar={reactDeleteCar} />
+                onDeleteCar={reactDeleteCar} onUpdateCar={reactUpdateCar} />
               <CarForm onSubmitCar={reactInsertCar} />
             </div>;
           } else {
