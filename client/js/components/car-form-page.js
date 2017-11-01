@@ -26,7 +26,7 @@ export class CarFormPage extends React.Component {
           query carFormPageQuery {
             viewer {
               id
-              ...CarFormHome_viewer
+              ...carFormHome_viewer
             }
           }
         `}
