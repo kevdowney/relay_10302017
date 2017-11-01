@@ -2,7 +2,6 @@ import React from 'react';
 import { createPaginationContainer, graphql } from 'react-relay';
 
 import { CarViewRowContainer } from './car-view-row';
-import {CarEditRowContainer} from './car-edit-row';
 
 export class CarTable extends React.Component {
 
