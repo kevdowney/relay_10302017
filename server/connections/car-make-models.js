@@ -1,22 +1,19 @@
 import { GraphQLInt, GraphQLFloat } from 'graphql';
 import { connectionDefinitions } from 'graphql-relay';
 
-import { carType } from '../types/car-type';
+import { carMakeModelType } from '../types/car-make-model-type';
 
 export const {
-  connectionType: carConnectionType,
-  edgeType: carEdgeType
+  connectionType: carMakeModelConnectionType,
+  edgeType: carMakeModelEdgeType
 } = connectionDefinitions({
   
-  name: 'Cars',
-  nodeType: carType,
+  name: 'CarMakeModels',
+  nodeType: carMakeModelType,
 
   connectionFields: () => ({
     totalCount: {
       type: GraphQLInt,
-    },
-    totalPrice: {
-      type: GraphQLFloat,
     },
 
   }),
