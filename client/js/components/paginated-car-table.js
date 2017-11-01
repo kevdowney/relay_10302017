@@ -70,11 +70,11 @@ export class CarTable extends React.Component {
             <table className="table table-striped">
                 <thead>
                 <tr>
-                    <th>Name</th>
-                    <th>Description</th>
+                    <th>Make</th>
+                    <th>Model</th>
+                    <th>Year</th>
                     <th>Color</th>
-                    <th>Size</th>
-                    <th>Quantity</th>
+                    <th>Price</th>
                     <th>Action</th>
                 </tr>
                 </thead>
