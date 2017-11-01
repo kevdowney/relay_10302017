@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 624ac7519dc11c6e1185c3b63339324d
+ * @relayHash eacf167ce0fd943fabbadcc0bfbc841c
  */
 
 /* eslint-disable */
@@ -9,24 +9,25 @@
 
 /*::
 import type {ConcreteBatch} from 'relay-runtime';
-export type carHomeQueryResponse = {|
-  +viewer: ?{|
-    +id: string;
-  |};
+export type paginatedCarTableQueryResponse = {|
+  +viewer: ?{| |};
 |};
 */
 
 
 /*
-query carHomeQuery {
+query paginatedCarTableQuery(
+  $count: Int!
+  $cursor: String
+) {
   viewer {
+    ...paginatedCarTable_viewer_1G22uz
     id
-    ...paginatedCarTable_viewer
   }
 }
 
-fragment paginatedCarTable_viewer on Viewer {
-  cars(first: 3) {
+fragment paginatedCarTable_viewer_1G22uz on Viewer {
+  cars(first: $count, after: $cursor) {
     edges {
       node {
         id
@@ -57,10 +58,23 @@ fragment carViewRow_car on Car {
 
 const batch /*: ConcreteBatch*/ = {
   "fragment": {
-    "argumentDefinitions": [],
+    "argumentDefinitions": [
+      {
+        "kind": "LocalArgument",
+        "name": "count",
+        "type": "Int!",
+        "defaultValue": null
+      },
+      {
+        "kind": "LocalArgument",
+        "name": "cursor",
+        "type": "String",
+        "defaultValue": null
+      }
+    ],
     "kind": "Fragment",
     "metadata": null,
-    "name": "carHomeQuery",
+    "name": "paginatedCarTableQuery",
     "selections": [
       {
         "kind": "LinkedField",
@@ -71,16 +85,22 @@ const batch /*: ConcreteBatch*/ = {
         "plural": false,
         "selections": [
           {
-            "kind": "ScalarField",
-            "alias": null,
-            "args": null,
-            "name": "id",
-            "storageKey": null
-          },
-          {
             "kind": "FragmentSpread",
             "name": "paginatedCarTable_viewer",
-            "args": null
+            "args": [
+              {
+                "kind": "Variable",
+                "name": "count",
+                "variableName": "count",
+                "type": null
+              },
+              {
+                "kind": "Variable",
+                "name": "cursor",
+                "variableName": "cursor",
+                "type": null
+              }
+            ]
           }
         ],
         "storageKey": null
@@ -91,11 +111,24 @@ const batch /*: ConcreteBatch*/ = {
   "id": null,
   "kind": "Batch",
   "metadata": {},
-  "name": "carHomeQuery",
+  "name": "paginatedCarTableQuery",
   "query": {
-    "argumentDefinitions": [],
+    "argumentDefinitions": [
+      {
+        "kind": "LocalArgument",
+        "name": "count",
+        "type": "Int!",
+        "defaultValue": null
+      },
+      {
+        "kind": "LocalArgument",
+        "name": "cursor",
+        "type": "String",
+        "defaultValue": null
+      }
+    ],
     "kind": "Root",
-    "name": "carHomeQuery",
+    "name": "paginatedCarTableQuery",
     "operation": "query",
     "selections": [
       {
@@ -107,20 +140,19 @@ const batch /*: ConcreteBatch*/ = {
         "plural": false,
         "selections": [
           {
-            "kind": "ScalarField",
-            "alias": null,
-            "args": null,
-            "name": "id",
-            "storageKey": null
-          },
-          {
             "kind": "LinkedField",
             "alias": null,
             "args": [
               {
-                "kind": "Literal",
+                "kind": "Variable",
+                "name": "after",
+                "variableName": "cursor",
+                "type": "String"
+              },
+              {
+                "kind": "Variable",
                 "name": "first",
-                "value": 3,
+                "variableName": "count",
                 "type": "Int"
               }
             ],
@@ -253,16 +285,22 @@ const batch /*: ConcreteBatch*/ = {
                 "storageKey": null
               }
             ],
-            "storageKey": "cars{\"first\":3}"
+            "storageKey": null
           },
           {
             "kind": "LinkedHandle",
             "alias": null,
             "args": [
               {
-                "kind": "Literal",
+                "kind": "Variable",
+                "name": "after",
+                "variableName": "cursor",
+                "type": "String"
+              },
+              {
+                "kind": "Variable",
                 "name": "first",
-                "value": 3,
+                "variableName": "count",
                 "type": "Int"
               }
             ],
@@ -270,13 +308,20 @@ const batch /*: ConcreteBatch*/ = {
             "name": "cars",
             "key": "CarTable_cars",
             "filters": null
+          },
+          {
+            "kind": "ScalarField",
+            "alias": null,
+            "args": null,
+            "name": "id",
+            "storageKey": null
           }
         ],
         "storageKey": null
       }
     ]
   },
-  "text": "query carHomeQuery {\n  viewer {\n    id\n    ...paginatedCarTable_viewer\n  }\n}\n\nfragment paginatedCarTable_viewer on Viewer {\n  cars(first: 3) {\n    edges {\n      node {\n        id\n        ...carViewRow_car\n        __typename\n      }\n      cursor\n    }\n    totalCount\n    pageInfo {\n      startCursor\n      endCursor\n      hasNextPage\n      hasPreviousPage\n    }\n  }\n}\n\nfragment carViewRow_car on Car {\n  id\n  make\n  model\n  year\n  color\n  price\n}\n"
+  "text": "query paginatedCarTableQuery(\n  $count: Int!\n  $cursor: String\n) {\n  viewer {\n    ...paginatedCarTable_viewer_1G22uz\n    id\n  }\n}\n\nfragment paginatedCarTable_viewer_1G22uz on Viewer {\n  cars(first: $count, after: $cursor) {\n    edges {\n      node {\n        id\n        ...carViewRow_car\n        __typename\n      }\n      cursor\n    }\n    totalCount\n    pageInfo {\n      startCursor\n      endCursor\n      hasNextPage\n      hasPreviousPage\n    }\n  }\n}\n\nfragment carViewRow_car on Car {\n  id\n  make\n  model\n  year\n  color\n  price\n}\n"
 };
 
 module.exports = batch;
