@@ -12,6 +12,7 @@ import { Home } from './components/home';
 import { WidgetTablePage } from './components/widget-table-page';
 import { WidgetFormPage } from './components/widget-form-page';
 import { CarHome } from './components/car-home';
+import { CarFormPage } from './components/car-form-page'
 
 class AppPage extends React.Component {
 
@@ -44,6 +45,7 @@ const BrowserRouter = createBrowserRouter({
     <Route path="/" Component={AppPage}>
       <Route path="/widgets" Component={WidgetTablePage} />
       <Route path="/create-widget" Component={WidgetFormPage} />
+      <Route path="/create-car" Component={CarFormPage} />
       <Route path="/cars" Component={CarHome} />
       <Route path="/" Component={Home} exact />
     </Route>
