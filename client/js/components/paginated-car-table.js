@@ -120,6 +120,11 @@ export class CarTable extends React.Component {
                         </div>
                     </td>
                 </tr>
+                <tr>
+                    <td>
+                        <div>Total Value $ {this.props.viewer.cars.totalPrice} </div>
+                    </td>
+                </tr>
                 </tfoot>
             </table>
         </div>;
@@ -146,6 +151,7 @@ export const PaginatedCarTableContainer = createPaginationContainer(
           cursor
         }
         totalCount
+        totalPrice
         pageInfo {
           startCursor
           endCursor
