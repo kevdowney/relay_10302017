@@ -15,6 +15,7 @@ export class CarTable extends React.Component {
         };
     }
 
+
     static defaultProps = {
         viewer: {
             cars: {
@@ -61,17 +62,18 @@ export class CarTable extends React.Component {
         this.props.onCreateCar();
     }
 
+
     render() {
 
         return <div>
             <table className="table table-striped">
                 <thead>
                 <tr>
-                    <th>Name</th>
-                    <th>Description</th>
+                    <th>Make</th>
+                    <th>Model</th>
+                    <th>Year</th>
                     <th>Color</th>
-                    <th>Size</th>
-                    <th>Quantity</th>
+                    <th>Price</th>
                     <th>Action</th>
                 </tr>
                 </thead>
@@ -86,8 +88,11 @@ export class CarTable extends React.Component {
                     <tr><td colSpan="6">There are no cars.</td></tr>;
                 } else {
                     carEdges.slice(startIndex, endIndex).map( ({ node: car }) => do {
+
                     <CarViewRowContainer key={car.id} car={car}
-                    onDeleteCar={this.props.onDeleteCar} />;
+                    onDeleteCar={this.props.onDeleteCar} onUpdateCar={this.props.onUpdateCar}/>;
+
+
                 });
                 }
                 }}
