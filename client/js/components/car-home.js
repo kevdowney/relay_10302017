@@ -11,6 +11,10 @@ import { deleteCar as relayDeleteCar } from '../mutations/delete-car';
 
 export class CarHome extends React.Component {
 
+  showCarForm = () => {
+    this.props.router.push('/create-car');
+  }
+
   render() {
 
     return <section>
@@ -31,14 +35,6 @@ export class CarHome extends React.Component {
         variables={{}}
         render={ ({ error, props, retry }) => {
 
-          const reactInsertCar = car => {
-            relayInsertCar(
-              environment,
-              props.viewer.id,
-              car,
-            );
-          };
-
           const reactDeleteCar = carId => {
             relayDeleteCar(
               environment,
@@ -50,7 +46,7 @@ export class CarHome extends React.Component {
           if (props) {
             return <div>
               <PaginatedCarTableContainer viewer={props.viewer}
-                onDeleteCar={reactDeleteCar} />
+                onDeleteCar={reactDeleteCar} onCreateCar={this.showCarForm} />
             </div>;
           } else {
             return <div>Loading...</div>;

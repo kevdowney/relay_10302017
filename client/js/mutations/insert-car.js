@@ -29,15 +29,15 @@ mutation insertCarMutation($input: InsertCarInput!) {
 // performs the actual update to the graph on the client
 const sharedUpdater = (source, carEdge, viewerId, totalCount) => {
 
-  const viewerProxy = source.get(viewerId);
-  const conn = ConnectionHandler.getConnection(viewerProxy, 'CarTable_cars');
-  ConnectionHandler.insertEdgeAfter(conn, carEdge);
+  // const viewerProxy = source.get(viewerId);
+  // const conn = ConnectionHandler.getConnection(viewerProxy, 'CarTable_cars');
+  // ConnectionHandler.insertEdgeAfter(conn, carEdge);
 
-  // update the total count
-  if (!totalCount) {
-    totalCount = conn.getValue('totalCount') + 1;
-  }
-  conn.setValue(totalCount, 'totalCount');
+  // // update the total count
+  // if (!totalCount) {
+  //   totalCount = conn.getValue('totalCount') + 1;
+  // }
+  // conn.setValue(totalCount, 'totalCount');
 };
 
 let clientMutationId = 0;
