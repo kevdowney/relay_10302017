@@ -33,18 +33,24 @@ export class CarForm extends React.Component {
   }
 
   render() {
-          
+    const that = this;
+    const findFun = function(node) {
+      return node.node.make === that.state.make;
+    }
+          const modelOptionsIndex = (this.props.viewer && this.state.make) ? this.props.viewer.carmakemodels.edges.findIndex(findFun) : 0;
+         const modelOptions = this.props.viewer.carmakemodels.edges[modelOptionsIndex].node.models;
     return <form>
       <div>
         <label htmlFor="make-input">Make</label>
-          <select value={this.state.make} onChange={this.onChange}>
-          {this.props.viewer && this.props.viewer.carmakemodels.edges.map((node) => (<option key={node.node.make} value={node.node.make}>{node.node.make}</option>))}
+          <select value={this.state.make} onChange={this.onChange} name="make">
+          {this.props.viewer && this.props.viewer.carmakemodels.edges.map((node) => (<option key={node.node.make} value={node.make}>{node.node.make}</option>))}
           </select>
       </div>
       <div>
         <label htmlFor="model-input">Model</label>
-        <input type="text" id="model-input" name="model"
-          value={this.state.model} onChange={this.onChange} />
+        <select value={this.state.model} onChange={this.onChange} name="model">
+        {modelOptions && modelOptions.map((model)=> (<option key={model} value={model}>{model}</option>))}
+        </select>
       </div>
       <div>
         <label htmlFor="year-input">Year</label>
