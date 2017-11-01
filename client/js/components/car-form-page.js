@@ -5,11 +5,13 @@ import { environment } from '../environment';
 
 import { CarFormHomeContainer } from './car-form-home';
 
+import { PaginatedCarTableContainer } from './paginated-car-table';
+
 
 export class CarFormPage extends React.Component {
 
   showCarTable = () => {
-    this.props.router.push('/Cars');
+    this.props.router.push('/cars');
   }
 
   render() {
@@ -26,7 +28,7 @@ export class CarFormPage extends React.Component {
           query carFormPageQuery {
             viewer {
               id
-              ...carFormHome_viewer
+              ...paginatedCarTable_viewer
             }
           }
         `}

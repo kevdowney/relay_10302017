@@ -51,7 +51,6 @@ export class CarHome extends React.Component {
             return <div>
               <PaginatedCarTableContainer viewer={props.viewer}
                 onDeleteCar={reactDeleteCar} />
-              <CarForm onSubmitCar={reactInsertCar} />
             </div>;
           } else {
             return <div>Loading...</div>;
